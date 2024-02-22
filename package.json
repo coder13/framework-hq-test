@@ -14,7 +14,8 @@
     "@types/markdown-it": "^13.0.7",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.1"
   },
   "engines": {
     "node": ">=20.6"
