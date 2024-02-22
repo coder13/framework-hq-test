@@ -42,7 +42,7 @@ jobs:
 
       - name: Build Site
         run: |
-          yarn install --frozen-lockfile
+          yarn install
           yarn import
           yarn build
 
