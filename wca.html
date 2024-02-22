@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Example dashboard | Hello Framework</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight,alt,wide.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight,alt,wide.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+
+define({id: "3e426231", inputs: ["FileAttachment"], outputs: ["person"], files: [{"name":"./data/person.json","mimeType":"application/json","path":"./_file/data/person.json"}], body: (FileAttachment) => {
+const person = FileAttachment("data/person.json").json();
+return {person};
+}});
+
+define({id: "d6bcb81d", inline: true, inputs: ["person","display"], body: async (person,display) => {
+display(await(
+person.person.name
+))
+}});
+
+define({id: "33e537d5", inputs: ["FileAttachment"], outputs: ["query"], files: [{"name":"./data/query.json","mimeType":"application/json","path":"./_file/data/query.json"}], body: (FileAttachment) => {
+const query = FileAttachment("data/query.json").json();
+return {query};
+}});
+
+define({id: "17c6661d", inputs: ["display","query"], body: (display,query) => {
+display(query);
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Hello Framework</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./example-dashboard">Example dashboard</a></li>
+    <li class="observablehq-link"><a href="./example-report">Example report</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./wca">Example dashboard</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="wca" tabindex="-1"><a class="observablehq-header-anchor" href="#wca">WCA</a></h1>
+<div id="cell-3e426231" class="observablehq observablehq--block"></div>
+<div><span id="cell-d6bcb81d" class="observablehq--loading"></span></div>
+<div id="cell-33e537d5" class="observablehq observablehq--block"></div>
+<div id="cell-17c6661d" class="observablehq observablehq--block"></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./example-report"><span>Example report</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="2024-02-22T03:14:22">Feb 22, 2024</a>.</div>
+</footer>
+</div>
