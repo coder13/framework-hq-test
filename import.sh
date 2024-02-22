@@ -19,7 +19,7 @@ unzip -q /tmp/WCA_export.sql.zip -d /tmp/WCA_export
 # Importing the SQL file into MySQL
 log "Importing WCA_export.sql into MySQL..."
 
-if mysql -h 172.18.0.1 -p wca --password=password1 < /tmp/WCA_export/WCA_export.sql; then
+if mysql -h 172.18.0.1 -u root -p wca --password=password1 < /tmp/WCA_export/WCA_export.sql; then
   log "Import successful"
 else
   log "Import failed"
