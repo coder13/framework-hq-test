@@ -43,7 +43,6 @@ jobs:
       - name: Build Site
         run: |
           yarn install
-          yarn import
           yarn build
 
       - name: Deploy to GitHub Pages
