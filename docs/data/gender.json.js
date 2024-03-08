@@ -8,16 +8,32 @@ const connection = mysql.createConnection({
   database: "wca",
 });
 
+const query = `
+WITH ResultDateGenders AS (
+  SELECT 
+    R.personId, 
+    YEAR(Competitions.start_date) AS year, 
+    P.gender
+  FROM Results R
+  JOIN Competitions ON R.competitionId = Competitions.id
+  JOIN Persons P ON R.personId = P.wca_id
+)
+SELECT 
+  year,
+  COUNT(DISTINCT CASE WHEN gender = 'm' THEN personId END) AS male,
+  COUNT(DISTINCT CASE WHEN gender = 'f' THEN personId END) AS female,
+  COUNT(DISTINCT CASE WHEN gender = 'o' THEN personId END) AS other
+FROM ResultDateGenders
+GROUP BY year
+ORDER BY year;
+`;
+
 // Connect to the MySQL server
 connection.connect((err) => {
   if (err) {
     console.error("Error connecting to MySQL server: ", err);
     process.exit(1);
   }
-
-  // Make the query
-  const wcaId = "2016HOOV01";
-  const query = `SELECT * FROM Results WHERE personId = '${wcaId}'`;
 
   connection.query(query, (err, results) => {
     if (err) {
